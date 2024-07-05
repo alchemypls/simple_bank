@@ -25,6 +25,14 @@ class BankAccount:
     def updated_balance(self):
         return self.__balance
 
+def negativecheck(input):
+    a = input
+    if a < 0:
+        print("Please try again with a postitive number.")
+        quit()
+    else:
+        print(f"Thank you, processing now...")
+        
 
 users = [BankAccount("Susan George", 5326.57, "Palm Springs, California(CA), 92262", "#4594"), BankAccount("Willie Finkel", 2624.94, "Cape Coral, Florida(FL), 33990", "#4587"), BankAccount("Jeannette George", 225.13, "Rock Island, Illinois(IL), 61201", "#7703")]
 
@@ -52,12 +60,14 @@ def main():
         choice = int(choice)
         if choice == 1:
             u_deposit = float(input("How much would like to desposit? : $ " ))
+            negativecheck(u_deposit)
             usr.deposit(u_deposit)
             print(f"Current balance : $ {round(usr.updated_balance(), 2)}") 
             
         elif choice == 2:
             usr.get_balance()
             u_withdraw = float(input("Please enter how much you would like to withdraw : $ "))
+            negativecheck(u_withdraw)
             usr.withdraw(u_withdraw)
             print(f"Your balance is now $ {round(usr.updated_balance(), 2)}")                      
         elif choice == 3:
